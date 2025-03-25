@@ -29,7 +29,7 @@ void child_signal_handler(int signalNumber) {
     }
 }
 
-void parent_signal_handler(int signo) {
+void parent_signal_handler(int signo __attribute__((unused))) {
     const char enterMsg[] = "\nEntering foreground-only mode (& is ignored)\n";
     const char exitMsg[] = "\nExiting foreground-only mode\n";
 
@@ -310,8 +310,7 @@ void tokenize_and_store(char userInput[], char *parsedArgs[], int *isBackgroundP
 
         parse_special_symbols(&currentToken, isBackgroundProcess, redirectInputName, redirectOutputName, pid_string, delimiters);
         
-        if (currentToken != NULL) {
-
+        if (strcmp(currentToken, "<") != 0 && strcmp(currentToken, ">") != 0 && strcmp(currentToken, "&") != 0) {
             parsedArgs[argIndex++] = replace_string(currentToken, "$$", pid_string);
         }
     }

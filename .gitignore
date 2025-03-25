@@ -1,0 +1,15 @@
+# macOS and Xcode debug files
+*.dSYM/
+*.plist
+*.yaml
+*.tmp
+
+# Executables
+smallshell
+
+# Object files
+*.o
+
+# Backup or swap files
+*~
+*.swp
